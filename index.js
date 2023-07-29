@@ -22,7 +22,7 @@
         </div>
 */
 
-const container = document.getElementById("container");
+let container = document.getElementById("container");
  
 async function fetchData() {
     let url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en";
@@ -31,8 +31,8 @@ async function fetchData() {
         throw new Error(`Error! status: ${response.status}`);
       }
     const data = await response.json();
-     appendDataInGrid(data);
-    //appendDataInList(data);
+    appendDataInGrid(data);
+    appendDataInList(data);
 }
 
 function appendDataInGrid(cardslist){
@@ -62,71 +62,56 @@ function appendDataInGrid(cardslist){
         container.appendChild(div);
    });
 }
+
+const tableBody = document.querySelector('.table tbody');
+
+function appendDataInList(data){  
+
+    data.forEach(item => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+            <tr>
+                <td id="img"><img src="${item.image}" width="30px" alt=""></td>
+                <td><div class="name">
+                    <div class="abrv">${item.symbol.toUpperCase()}</div>
+                    <div class="fname">${item.name}</div>
+                </div></td>
+                <td> <span class="figures">${item.price_change_percentage_24h} %</span> </td>
+                <td> <span class="figures">&#36;${item.current_price}</span></td>
+                <td> <span class="big_figures">${item.total_volume}</span></td>
+                <td> <span class="big_figures">&#36;${item.market_cap}</span></td>
+            </tr>`;
+   });
+ }  
+
+let gridSection = document.getElementById("grids");
+let listSection = document.getElementById("lists")
+let list = document.getElementById("list");
+gridSection.addEventListener("click", () => {
+    let computedStyle = window.getComputedStyle(container)
+    if (computedStyle.display === 'none') {
+        console.log("inside grid");
+        container.style.display = 'grid';
+        list.style.display = 'none';
+        gridSection.style.color =  '#4A80E2';
+        gridSection.style.borderBottom = '2px solid #4A80E2';
+        listSection.style.color =  '#fff';
+        listSection.style.borderBottom = 'none';
+      } 
+    })    
+listSection.addEventListener("click", () => {
+    let computedStyle = window.getComputedStyle(list)
+    if (computedStyle.display === 'none') {
+        console.log("inside list");
+        list.style.display = 'block';
+        container.style.display = 'none';
+        listSection.style.color =  '#4A80E2';
+        listSection.style.borderBottom = '2px solid #4A80E2';
+        gridSection.style.color =  '#fff';
+        gridSection.style.borderBottom = 'none';
+    }
+})
+
 fetchData();
 
-//const table = document.getElementsByTagName("table");
 
-// function appendDataInList(cardsList){  
-
-//     cardslist.forEach((card) => {
-//         let tBody = document.createElement("tbody");
-//         div.className = ("card");
-//         div.innerHTML = `
-  
-//                 <tr>
-//                     <td><img src="${card.image}" width="30px" alt=""></td>
-//                     <td><div class="name">
-//                         <div class="abrv">${card.symbol.toUpperCase()}</div>
-//                         <div class="fname">${card.name}</div>
-//                     </div></td>
-//                     <td> <span class="figures">${card.price_change_percentage_24h} %</span> </td>
-//                     <td> <span class="figures">&#36;${card.current_price}</span></td>
-//                     <td> <span class="big_figures">Total Volume: ${card.total_volume}</span></td>
-//                     <td> <span class="big_figures">Market Cap: &#36;${card.market_cap}</span></td>
-//                 </tr>
-
-//            `
-//         table.appendChild(tBody);
-//    });
-// //     let tBody = document.createElement("tbody");
-// //     for(let i = 0; i < cardsList.length; i++){
-// // /*        <table>
-// //             <tbody>
-// //                 <tr>
-// //                     <td><img src="images.png" width="30px" alt=""></td>
-// //                     <td><div class="name">
-// //                         <tr class="abrv">BTC</tr>
-// //                         <tr class="fname">Bitcoin</tr>
-// //                     </div></td>
-// //                     <td> <span class="figures">2.03%</span> </td>
-// //                     <td> <span class="figures">$234,86</span></td>
-// //                     <td> <span class="big_figures">Total Volume: 12435436357</span></td>
-// //                     <td> <span class="big_figures">Market Cap: $413546657857</span></td>
-// //                 </tr>
-// //             </tbody>
-// //         </table>
-// // */
-// //         let tr = document.createElement("tr");
-// //         let img= document.createElement("td");
-// //         img.innerText = cardsList[i].image;
-
-// //         let name = document.createElement("td");
-// //         name.innerText = cardsList[i].symbol.toUpperCase(),cardsList[i].name;
-
-// //         let percent = document.createElement("td");
-// //         percent.innerText = cardsList[i].price_change_percentage_24h;
-
-// //         let price = document.createElement("td");
-// //         price.innerText = cardsList[i].current_price;
-
-// //         let total_volume = document.createElement("td");
-// //         total_volume.innerText = cardsList[i].total_volume;
-
-// //         let market_cap = document.createElement("td");
-// //         market_cap.innerText = cardsList[i].market_cap;
-
-// //         tr.append(img, name, percent, price, total_volume, market_cap);
-// //         tBody.appendChild(tr);
-// //     }
-// //   table.appendChild(tBody);
-// }  

@@ -88,7 +88,6 @@ button {
 .type-selector {
     display: flex;
     justify-content: space-evenly;
-    /* border: 1px solid indianred; */
 }
 .type-selector div{
     width: 100%;
@@ -97,7 +96,7 @@ button {
 .type-selector p {
     text-align: center;
 }
-.type-selector div:hover p{
+#grids{
     color: #4A80E2;
     border-bottom:2px solid #4A80E2;
 }
@@ -105,7 +104,10 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 5px;
-
+    
+}
+#list{
+    display: none;
 }
 .card {
     background-color: #1b1b1b;
@@ -124,6 +126,7 @@ button {
     display: flex;
     flex-direction: column;
     padding-left: 10px;
+    font-size: 1.2rem;
 }
 .name > .fname {
     color: #AAA;
@@ -142,27 +145,30 @@ button {
     color: #AAA;
 }
 @media screen and  (min-width: 700px){
-    .card {
+    .container{
         grid-template-columns : repeat(4, 1fr);
     }
 }
 
 @media screen and  (max-width: 700px){
-    .card {
+    .container{
         grid-template-columns : repeat(2, 1fr);
     }
 }
 
 @media screen and  (max-width: 400px){
-    .card {
+    .container{
         grid-template-columns : repeat(1, 1fr);
     }
 }
-/* .table {
-    border: 1px solid lavender;
+.table {
+    padding: 20px;
 }
 .table .logo {
     display: flex;
+}
+tr{
+    text-align: center;
 }
 td > img {
     display: inline;
@@ -172,7 +178,6 @@ td.name > tr {
 }
 td{
     width: 1%;
-    border: 1px solid burlywood;
     padding: 10px 2px;
 }
 td span.figures{
@@ -180,4 +185,4 @@ td span.figures{
 }
 td span.big_figures{
     color: #AAA;
-} */
+}
