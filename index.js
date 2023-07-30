@@ -48,10 +48,10 @@ function appendDataInGrid(cardslist){
                 </div>
             </div>
             <div class="percent">
-               <span>${card.price_change_percentage_24h} %</span> 
+                <span ${card.price_change_percentage_24h>0?`style="color:rgb(115, 182, 111); border: 1px solid rgb(115, 182, 111)"`:`style="color:rgb(243, 38, 38); border: 1px solid rgb(243, 38, 38)"`}> ${card.price_change_percentage_24h} %</span> 
             </div>
             <div class="price">
-                <span>&#36;${card.current_price}</span>
+                <span ${card.price_change_percentage_24h>0?`style="color:rgb(115, 182, 111); "`:`style="color:rgb(243, 38, 38);"`}> $${card.current_price}</span>
             </div>
             <div class="total_volume">
                 <span>Total Volume: ${card.total_volume}</span>
@@ -76,10 +76,10 @@ function appendDataInList(data){
                     <div class="abrv">${item.symbol.toUpperCase()}</div>
                     <div class="fname">${item.name}</div>
                 </div></td>
-                <td> <span class="figures">${item.price_change_percentage_24h} %</span> </td>
-                <td> <span class="figures">&#36;${item.current_price}</span></td>
+                <td> <span class="figures p" ${item.price_change_percentage_24h>0?`style="color:rgb(115, 182, 111); border: 1px solid rgb(115, 182, 111)"`:`style="color:rgb(243, 38, 38); border: 1px solid rgb(243, 38, 38)"`}> ${item.price_change_percentage_24h} %</span> </td>
+                <td> <span class="figures" ${item.price_change_percentage_24h>0?`style="color:rgb(115, 182, 111); "`:`style="color:rgb(243, 38, 38);"`}> $${item.current_price}</span></td>
                 <td> <span class="big_figures">${item.total_volume}</span></td>
-                <td> <span class="big_figures">&#36;${item.market_cap}</span></td>
+                <td> <span class="big_figures">$${item.market_cap}</span></td>
             </tr>`;
    });
  }  

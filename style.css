@@ -94,6 +94,9 @@ button {
     width: 100%;
     padding: 3px;
 }
+.type-selector div:hover p{
+    color: #91d1fc;
+}
 .type-selector p {
     text-align: center;
 }
@@ -134,51 +137,11 @@ button {
     font-size: 14px;
 }
 .percent > span{
-    border: 1px solid rgb(115, 182, 111);
     padding: 5px 12px;
     border-radius: 20px ;
-    color: rgb(115, 182, 111);
-}
-.price > span {
-    color: rgb(123, 196, 119);
 }
 .total_volume,.market_cap span{
     color: #AAA;
-}
-@media screen and  (min-width: 700px){
-    #container{
-        grid-template-columns : repeat(4, 1fr);
-    }
-}
-
-@media screen and  (max-width: 700px){
-    #container{
-        grid-template-columns : repeat(2, 1fr);
-    }
-    .navbar,.links{
-        flex-direction: column;
-        font-size: 0.9rem;
-        gap: 10px;
-    }
-}
-
-@media screen and  (max-width: 400px){
-    .navbar,.links, .links > ul{
-        flex-direction: column;
-        font-size: 0.9rem;
-        gap: 5px;
-    }
-    #container{
-        grid-template-columns : repeat(1, 1fr);
-        margin: 10px;
-    }
-    button {
-        padding: 8px 12px;
-        background-color: #4A80E2;
-        color: white;
-        border-radius: 20px;
-        border: none;
-    }
 }
 .table {
     padding: 20px;
@@ -199,9 +162,64 @@ td{
     width: 1%;
     padding: 10px 2px;
 }
-td span.figures{
- color: rgb(123, 196, 119);
-}
+td span.p{
+    padding: 5px 12px;
+    border-radius: 20px ;
+   }
 td span.big_figures{
     color: #AAA;
+}
+th{
+    text-align: center;
+    font-size: 18px;
+    color: rgb(247 147 26);
+}
+@media screen and (min-width: 700px){
+    #container{
+        grid-template-columns : repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px){
+    #container{
+        grid-template-columns : repeat(2, 1fr);
+    }
+    .navbar,.links{
+        flex-direction: column;
+        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+}
+@media screen and (max-width: 1000px){
+    #list {
+        overflow-x: auto;
+    }
+    td span.p{
+        padding: 3px 9px;
+        border-radius: 20px ;
+       }
+}
+
+@media screen and (max-width: 400px){
+    .navbar,.links, .links > ul{
+        flex-direction: column;
+        font-size: 0.9rem;
+        gap: 5px;
+    }
+    #container{
+        grid-template-columns : repeat(1, 1fr);
+        margin: 10px;
+    }
+    button {
+        padding: 8px 12px;
+        background-color: #4A80E2;
+        color: white;
+        border-radius: 20px;
+        border: none;
+    }
+    td span.p{
+        padding: 0;
+        border-radius: 20px;
+    }
 }
